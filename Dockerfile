@@ -29,7 +29,6 @@ RUN CONFIG="\
     && cp objs/ngx_http_flv_live_module.so /usr/lib/nginx/modules \
     && strip /usr/lib/nginx/modules/ngx_http_flv_live_module.so \
     && rm -rf /usr/src/nginx-$NGINX_VERSION /usr/src/nginx-http-flv-module-$NGINX_HTTP_FLV_MODULE_VERSION \
-
     && apk del .build-deps
 
 COPY nginx.conf /etc/nginx/nginx.conf

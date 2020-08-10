@@ -1,0 +1,52 @@
+﻿<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta http-equiv="X-UA-Compatible" content="ie=edge">
+  <title>Document</title>
+  <link rel="stylesheet" href="src/css/video-js.css">
+  <script src="src/js/video.js"></script>
+  <script src="src/js/videojs-flash.js"></script>
+</head>
+<body>
+  <video id="myVideo" class="video-js vjs-default-skin vjs-big-play-centered" width="600" controls preload="auto" x5-video-player-fullscreen="true">
+    <!-- <source id="source" src="https://pull.testmmc.top/live/testssl.m3u8" type="application/x-mpegURL"> -->
+    <source src="rtmp://192.168.4.83:1945/live/docker" type="rtmp/flv">
+  </video>
+  <button id="hlsbtn" onclick="playhls">播放HLS</button>   
+  <button id="rtmpbtn" onclick="playrtmp">播放RTMP</button>
+<button onclick="window.location.href = '/php/'">php Info</button>
+<button onclick="window.location.href = 'http://docker.test.com:8080/'">phpmyadmin</button>
+  <script>
+      // videojs 简单使用
+      var myVideo = videojs('myVideo', {
+          bigPlayButton: true,
+          textTrackDisplay: false,
+          posterImage: false,
+          errorDisplay: true,
+          autoplay: true
+      })
+      // myVideo.play() // 视频播放
+
+      document.getElementById('hlsbtn').addEventListener('click', function () {
+        console.log('hls')
+        myVideo.src({
+          type: 'application/x-mpegURL',
+          src: 'rtmp://192.168.4.83:1945/live/docker'
+        })
+        // myVideo.play()
+      })
+
+      document.getElementById('rtmpbtn').addEventListener('click', function () {
+        console.log('playrtmp')
+        myVideo.src({
+          type: 'rtmp/flv',
+          src: 'rtmp://192.168.4.83:1945/live/docker'
+        })
+        // myVideo.play()
+      })
+
+  </script>
+</body>
+</html>

@@ -1,0 +1,22 @@
+server {
+	listen 127.0.0.1:80;
+	listen 192.168.10.129:80;
+	listen 80;
+	server_name city.138.com;
+	root /var/www/web;
+	index index.php;
+
+	location / {
+	try_files $uri $uri/ /index.php?$args;
+	}
+
+	location ~ \.php$ {
+		fastcgi_pass unix:/run/php/php7.1-fpm.sock;
+		include snippets/fastcgi-php.conf;
+		fastcgi_param SCRIPT_FILENAME $document_root$fastcgi_script_name;
+	}
+
+	location ~ /\.ht {
+			deny all;
+	}
+}

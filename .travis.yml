@@ -1,0 +1,4 @@
+language: c
+
+install:
+  - docker build -t http-flv-nginx-rtmp-alpine .

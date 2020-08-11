@@ -1,6 +1,6 @@
 FROM  nginx:1.16.1-alpine
 
-ENV NGINX_HTTP_FLV_MODULE_VERSION 1.2.6
+ENV NGINX_HTTP_FLV_MODULE_VERSION 1.2.7
 
 RUN CONFIG="\
     --prefix=/etc/nginx \
@@ -35,5 +35,5 @@ COPY nginx.conf /etc/nginx/nginx.conf
 COPY conf.d/ /etc/nginx/conf.d/
 COPY www/ /var/www/
 
-EXPOSE 8084 1940
+EXPOSE 80 1935
 
